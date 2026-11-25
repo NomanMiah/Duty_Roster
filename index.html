@@ -201,7 +201,7 @@ function load(){let d=null;try{d=SRV?JSON.parse(JSON.stringify(SRV)):null}catch(
 
 /* ===== সার্ভার সংযোগ (Google Apps Script) : সব ডেটা ও লগ ইন যাচাই সার্ভারে হয়, ব্রাউজারে কোনো পাসওয়ার্ড থাকে না ===== */
 let TOK='',SRV=null,SRVME=null,REV=0,lastSent='',busyS=false,pendS=false,saveT=null,SECR=null,pollT=null,idleT=null,localDirty=false;
-const API_URL='YOUR_WEB_APP_URL_HERE';
+const API_URL='https://script.google.com/macros/s/AKfycbx-tUtqQ7Fp1RXBysWutJVRKh6gw-Sjjp05XjPhsCEMLmJlsVCrzOQSdmrAlE-ECUqD1g/exec';
 const rpc=(fn,...a)=>{
  if(typeof google!=='undefined'&&google.script&&google.script.run)return new Promise((ok,no)=>{try{google.script.run.withSuccessHandler(ok).withFailureHandler(no)[fn](...a)}catch(e){no(e)}});
  return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:a})}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})};
