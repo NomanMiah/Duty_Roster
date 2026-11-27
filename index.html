@@ -333,7 +333,7 @@ function render(){
  $('#lvb').hidden=!(PM('lv')||(S.show&&S.show.l));$('#rcb').hidden=isA();$('#pdfb').hidden=!PM('pdf');$('#csvb').hidden=!PM('csv');$('#stfb').hidden=!PM('stf');$('#sgb').hidden=!ACCT;$('#tb-m').hidden=!PM('mon');$('#ttl').textContent=t;$('#ttl').hidden=view==='d';{const nd=!PM('mkw')&&view==='w';$('#dp').hidden=nd;document.querySelector('.nav').classList.toggle('nodp',nd)}$('#ptt').textContent='ডিউটি রোস্টার – '+t;$('#dp').value=cur;
  ['d','w','m'].forEach(v=>$('#tb-'+v).classList.toggle('on',v===view));
  $('#main').innerHTML=view==='d'?daily():view==='w'?weekly():monthly()}
-function setV(v){if(v==='m'&&!isA())v='d';if(v!==view){if(view!=='d')CV[view]=cur;cur=v==='d'?today():(CV[v]||today());view=v;rShow=false;rf=addDays(today(),1);rt=addDays(today(),3)}render()}
+function setV(v){if(v==='m'&&!PM('mon'))v='d';if(v!==view){if(view!=='d')CV[view]=cur;cur=v==='d'?today():(CV[v]||today());view=v;rShow=false;rf=addDays(today(),1);rt=addDays(today(),3)}render()}
 function mv(n){if(view==='d')cur=addDays(cur,n);else if(view==='w')cur=addDays(cur,7*n);else{const d=dt(cur);d.setMonth(d.getMonth()+n,1);cur=fmt(d)}render()}
 
 function dlg(h){$('#dlg').className='';$('#dlg').innerHTML=h+'<div class="r"><button class="o" onclick="$(\'#dlg\').close()">বন্ধ করুন</button></div>';if(!$('#dlg').open)$('#dlg').showModal()}
